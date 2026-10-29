@@ -1,0 +1,5 @@
+[
+    { "id": 1, "nombre": "Audífonos Bluetooth", "descripcion": "Audífonos inalámbricos con estuche de carga", "estado": "disponible" },
+    { "id": 2, "nombre": "Gift card $20.000", "descripcion": "Tarjeta de regalo para tienda de libros", "estado": "disponible" },
+    { "id": 3, "nombre": "Termo de acero", "descripcion": "Termo de 1 litro que mantiene la temperatura", "estado": "entregado" }
+]

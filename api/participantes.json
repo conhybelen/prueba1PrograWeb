@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "nombre": "Camila",
+        "apellido": "Rojas",
+        "numero_rifa": 12
+    },
+    {
+        "id": 2,
+        "nombre": "Matías",
+        "apellido": "Soto",
+        "numero_rifa": 27
+    },
+    {
+        "id": 3,
+        "nombre": "Fernanda",
+        "apellido": "Muñoz",
+        "numero_rifa": 45
+    }
+]
