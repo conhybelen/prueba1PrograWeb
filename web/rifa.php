@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Guardia de la puerta (el mismo de panel.php)
 if (!isset($_SESSION['usuario'])) {
     header('Location: index.php');
     exit;
@@ -9,12 +8,10 @@ if (!isset($_SESSION['usuario'])) {
 
 $precio = 2000;
 
-// Si es la primera vez que entra, la cantidad parte en 0
 if (!isset($_SESSION['reservados'])) {
     $_SESSION['reservados'] = 0;
 }
 
-// Cuando se envía el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cantidad = (int)($_POST['cantidad'] ?? 0);
     $accion   = $_POST['accion'] ?? '';
@@ -24,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($accion === 'agregar') {
         $_SESSION['reservados'] += $cantidad;
     } elseif ($accion === 'quitar') {
-        // Validación para que nunca quede negativo
         if ($cantidad > $_SESSION['reservados']) {
             $_SESSION['mensaje'] = 'No puedes quitar más números de los que tienes reservados.';
         } else {
@@ -32,12 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Redirigir a la misma página: así F5 no vuelve a enviar el formulario
     header('Location: rifa.php');
     exit;
 }
 
-// Mostrar mensaje una sola vez y después borrarlo
 $mensaje = $_SESSION['mensaje'] ?? '';
 unset($_SESSION['mensaje']);
 

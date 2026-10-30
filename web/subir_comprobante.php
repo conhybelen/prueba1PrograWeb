@@ -1,18 +1,16 @@
 <?php
 session_start();
 
-// Guardia de la puerta (la pauta SÍ lo exige aquí)
 if (!isset($_SESSION['usuario'])) {
     header('Location: index.php');
     exit;
 }
 
 $mensaje = '';
-$tipo = '';   // 'ok' o 'error', para el color del mensaje
+$tipo = ''; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // ¿Llegó un archivo sin errores?
     if (!isset($_FILES['archivo']) || $_FILES['archivo']['error'] !== UPLOAD_ERR_OK) {
         $mensaje = 'Error: no se seleccionó un archivo o hubo un problema al subirlo.';
         $tipo = 'error';
@@ -28,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mensaje = 'Error: el archivo no puede pesar más de 5 MB.';
             $tipo = 'error';
         } else {
-            // Se agrega la fecha y hora al nombre para no pisar archivos con el mismo nombre
             $nombreFinal = date('Ymd_His') . '_' . $nombreOriginal;
             $destino = __DIR__ . '/comprobantes/' . $nombreFinal;
 
@@ -56,7 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p style="color:<?= $tipo === 'ok' ? 'green' : 'red' ?>;"><?= $mensaje ?></p>
     <?php endif; ?>
 
-    <!-- enctype es OBLIGATORIO para poder enviar archivos -->
     <form method="POST" action="subir_comprobante.php" enctype="multipart/form-data">
         <input type="file" name="archivo" required><br><br>
         <button type="submit">Subir</button>

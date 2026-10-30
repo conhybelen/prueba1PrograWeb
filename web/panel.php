@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Protección: si no hay sesión, de vuelta al login
 if (!isset($_SESSION['usuario'])) {
     header('Location: index.php');
     exit;

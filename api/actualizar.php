@@ -12,7 +12,6 @@ if ($id < 1) {
 
 $lista = leerJson('participantes.json');
 
-// Buscar la posición del participante con ese ID
 $posicion = null;
 foreach ($lista as $i => $p) {
     if ((int)$p['id'] === $id) {
@@ -25,7 +24,6 @@ if ($posicion === null) {
     responder(404, ['error' => "No existe un participante con id $id."]);
 }
 
-// Solo se cambia lo que venga en la petición
 if (isset($datos['nombre']) && trim($datos['nombre']) !== '') {
     $lista[$posicion]['nombre'] = trim($datos['nombre']);
 }

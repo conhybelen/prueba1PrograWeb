@@ -1,16 +1,12 @@
 <?php
 session_start();
 
-// Guardia de la puerta (también la exige la pauta)
 if (!isset($_SESSION['usuario'])) {
     header('Location: index.php');
     exit;
 }
 
 $carpeta = __DIR__ . '/comprobantes/';
-
-// scandir lista todo lo que hay en la carpeta;
-// quitamos '.', '..' y el .gitkeep, que no son comprobantes
 $archivos = array_diff(scandir($carpeta), ['.', '..', '.gitkeep']);
 ?>
 <!DOCTYPE html>
